@@ -1,4 +1,10 @@
-# CLAUDE.md – Ferencváros Európai Meccsek Interaktív Térképe
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+---
+
+# Ferencváros Európai Meccsek Interaktív Térképe
 
 ## Projekt leírás
 
@@ -9,12 +15,19 @@ jelölik a városokat; kattintásra popup jelenik meg az adott helyszínen játs
 
 ---
 
+## Projekt állapota
+
+A projekt még nincs implementálva — a forrásfájlok (`index.html`, `style.css`, `matches.js`, `map.js`) még nem léteznek. Ez a CLAUDE.md a teljes specifikációt tartalmazza az implementációhoz.
+
+---
+
 ## Tech stack
 
 - **Vanilla HTML5 / CSS3 / JavaScript (ES6+)**
 - **Leaflet.js** (CDN) – interaktív térkép
 - **CartoDB Dark Matter** tile – sötét alaptérkép
-- Semmi build tool, semmi npm – közvetlenül böngészőből megnyitható
+- Semmi build tool, semmi npm – közvetlenül böngészőból megnyitható
+- `window.MATCHES` globális változóként exportálva (nem ES module), hogy CORS nélkül működjön `file://` protokollon
 
 ---
 
