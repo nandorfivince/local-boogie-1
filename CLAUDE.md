@@ -1,4 +1,38 @@
-# CLAUDE.md – Ferencváros Európai Meccsek Interaktív Térképe
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Development Commands
+
+```bash
+# Run locally (no build step, no dependencies):
+python3 -m http.server 8080
+# Then open: http://localhost:8080
+
+# Or simply open index.html in a browser (may hit CORS issues with matches.js)
+```
+
+## Architecture
+
+Static vanilla JS project — 4 files, no build tools, no npm:
+- `index.html` — HTML shell with header, stat counters (`id="stat-matches"`, `id="stat-countries"`, `id="stat-cities"`), filter buttons (`data-filter="all|BL|EL|ECL"`), and `<div id="map">`
+- `style.css` — Dark theme with Fradi colors, CSS variables in `:root`
+- `matches.js` — `const MATCHES = [...]` array of match objects (loaded first via `<script>`)
+- `map.js` — Leaflet map init, marker creation, popup generation, filtering logic (loaded second)
+
+**Data flow:** `matches.js` exposes global `MATCHES` → `map.js` groups by city, creates markers, wires filter buttons, fills stat counters.
+
+**Key grouping rule:** Matches at the same `city` value share one marker. Coordinates must be identical for all matches in the same city. Exception: Budapest has two venues (Groupama Aréna and Puskás Aréna) which get separate markers.
+
+## Critical Rules
+
+- **Language:** Project language is Hungarian — all UI text, city names, country names, comments use Hungarian.
+- **Data source:** tempofradi.hu is the single source of truth. If it conflicts with Wikipedia/UEFA/Soccerway, tempofradi wins.
+- **Known venue quirks:** Several teams played at unexpected cities (Partizani→Elbasan, Go Ahead Eagles→Emmen, Maccabi→Netanya, Tobol→Kosztanaj, TNS→Oswestry). See the "Ismert finomságok" table below.
+- **Git workflow:** No direct commits to `main`. Use `gabor/adatok` or `vince/terkep` branches. Commit messages: `[name] file: description`.
+- **Ownership:** Gábor owns `index.html`, `style.css`, `matches.js`. Vince owns `map.js`.
+
+---
 
 ## Projekt leírás
 
