@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ferencváros Európán át · 2010–2026</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Ferencv%C3%A1rosi_TC_logo.svg/200px-Ferencv%C3%A1rosi_TC_logo.svg.png"
+           alt="Ferencváros logó" class="hero-logo" />
+      <div class="hero-text">
+        <h1>Ferencváros Európán át · 2010–2026</h1>
+        <div class="stats">
+          <div class="stat-card">
+            <span class="stat-number" id="stat-matches">0</span>
+            <span class="stat-label">meccs</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="stat-countries">0</span>
+            <span class="stat-label">ország</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="stat-cities">0</span>
+            <span class="stat-label">város</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="filter-bar">
+    <button class="filter-btn active" data-filter="all">Összes</button>
+    <button class="filter-btn" data-filter="BL">BL</button>
+    <button class="filter-btn" data-filter="EL">EL</button>
+    <button class="filter-btn" data-filter="ECL">ECL</button>
+  </nav>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="matches.js"></script>
+  <script src="map.js"></script>
+
+</body>
+</html>

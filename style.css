@@ -1,0 +1,214 @@
+/* ── Reset & CSS változók ──────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #1a1a2e;
+  --card-bg: #16213e;
+  --fradi-green: #007A33;
+  --fradi-white: #FFFFFF;
+  --text: #e0e0e0;
+  --bl-ring: #FFD700;
+  --el-ring: #FF6B35;
+  --ecl-ring: #9B59B6;
+  --mixed-ring: #FFFFFF;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ── Hero fejléc ──────────────────────────────────────────────────────── */
+
+.hero {
+  background: var(--card-bg);
+  padding: 12px 20px;
+  border-bottom: 2px solid var(--fradi-green);
+}
+
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.hero-text h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--fradi-white);
+  white-space: nowrap;
+}
+
+.stats {
+  display: flex;
+  gap: 16px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.stat-number {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--fradi-green);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text);
+  opacity: 0.8;
+}
+
+/* ── Szűrő sáv ───────────────────────────────────────────────────────── */
+
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--bg);
+}
+
+.filter-btn {
+  padding: 6px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: var(--fradi-green);
+  color: var(--fradi-white);
+}
+
+.filter-btn.active {
+  background: var(--fradi-green);
+  border-color: var(--fradi-green);
+  color: var(--fradi-white);
+}
+
+/* ── Térkép ───────────────────────────────────────────────────────────── */
+
+#map {
+  height: calc(100vh - 130px);
+  width: 100%;
+}
+
+/* ── Leaflet popup egyedi stílus ──────────────────────────────────────── */
+
+.leaflet-popup-content-wrapper {
+  background: var(--card-bg) !important;
+  color: var(--text) !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--card-bg) !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px !important;
+  font-size: 13px;
+  line-height: 1.5;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.popup-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--fradi-green);
+  margin-bottom: 8px;
+}
+
+.popup-match {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.popup-match:last-of-type {
+  border-bottom: none;
+}
+
+.popup-meta {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 2px;
+}
+
+.popup-score {
+  font-weight: 600;
+  color: var(--fradi-white);
+}
+
+.popup-summary {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.leaflet-popup-close-button {
+  color: var(--text) !important;
+}
+
+/* ── Reszponzív ───────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 1rem;
+    white-space: normal;
+  }
+
+  .stats {
+    justify-content: center;
+  }
+
+  .filter-btn {
+    padding: 5px 14px;
+    font-size: 0.8rem;
+  }
+
+  #map {
+    height: calc(100vh - 160px);
+  }
+}
