@@ -146,10 +146,29 @@ function applyFilter(competition) {
   });
 }
 
+// --- Számlálók feltöltése ---
+function updateStats(matches) {
+  const matchCount = matches.length;
+  const countries = new Set(matches.map(m => m.country)).size;
+  const cities = new Set(matches.map(m => `${m.city}|${m.lat}|${m.lng}`)).size;
+
+  document.getElementById('stat-matches').textContent = matchCount;
+  document.getElementById('stat-countries').textContent = countries;
+  document.getElementById('stat-cities').textContent = cities;
+}
+
+updateStats(MATCHES);
+
+// --- Szűrő gombok eseménykezelése ---
 document.querySelectorAll('.filters button').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    applyFilter(btn.dataset.filter);
+    const filter = btn.dataset.filter;
+    applyFilter(filter);
+
+    // Számlálók frissítése a szűrőnek megfelelően
+    const filtered = filter === 'all' ? MATCHES : MATCHES.filter(m => m.competition === filter);
+    updateStats(filtered);
   });
 });
